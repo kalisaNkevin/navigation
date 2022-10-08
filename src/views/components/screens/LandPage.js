@@ -2,12 +2,13 @@ import * as React from 'react';
 import { Text,Button, SafeAreaView } from 'react-native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
+      <Text>Welcome to my Mobo App!</Text>
       <Button
         title="Go to Profile"
         onPress={() => navigation.navigate('Details')}
@@ -19,16 +20,16 @@ function HomeScreen({ navigation }) {
 function SettingsScreen() {
   return (
     <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Profile!</Text>
+      <Text>Drawer Profile!</Text>
     </SafeAreaView>
   );
 }
 function DetailsScreen({ navigation }) {
     return (
       <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
+        <Text>stack navigation experience</Text>
         <Button
-          title="Go to Details... again"
+          title=" View More... "
           onPress={() => navigation.push('Details')}
         />
       </SafeAreaView>
@@ -36,8 +37,8 @@ function DetailsScreen({ navigation }) {
   }
 
 const Tab = createMaterialBottomTabNavigator();
-const SettingsStack = createNativeStackNavigator();
 const HomeStack = createNativeStackNavigator();
+const SettingsDrawer = createDrawerNavigator();
 
 
 function LandPage() {
@@ -70,9 +71,10 @@ function LandPage() {
           ),
         }}>
           {() => (
-            <SettingsStack.Navigator>
-              <SettingsStack.Screen name="Profile" component={SettingsScreen} />
-            </SettingsStack.Navigator>
+            <SettingsDrawer.Navigator>
+              <SettingsDrawer.Screen name="Profile" component={SettingsScreen} />
+              <SettingsDrawer.Screen name="Settings" component={DetailsScreen} />
+            </SettingsDrawer.Navigator>
           )}
         </Tab.Screen>
   

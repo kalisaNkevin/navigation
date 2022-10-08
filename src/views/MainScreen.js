@@ -14,9 +14,9 @@ export default function App() {
         <NavigationContainer>
 
             <Stack.Navigator screenOptions={{headerShown: false}} >
-                {/* <Stack.Screen name='HomePage' component={HomePage} />
+                <Stack.Screen name='HomePage' component={HomePage} />
                 <Stack.Screen name='RegisterPage' component={RegisterPage} />
-                <Stack.Screen name='LoginPage' component={LoginPage} /> */}
+                <Stack.Screen name='LoginPage' component={LoginPage} />
                 <Stack.Screen name='LandPage' component={LandPage} />
 
 
