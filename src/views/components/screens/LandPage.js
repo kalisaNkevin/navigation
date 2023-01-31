@@ -1,10 +1,12 @@
-
 import * as React from 'react';
 import { Text,Button, SafeAreaView, Image } from 'react-native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import Card from "../Card"
+import Profile from '../Profile';
+
 import SearchBar from '../Search';
 import COLORS from '../../../consts/colors';
 
@@ -36,21 +38,90 @@ function HomeScreen({ navigation }) {
 function SettingsScreen() {
   return (
     <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+
       <Text>Drawer Profile!</Text>
     </SafeAreaView>
   );
 }
 function DetailsScreen({ navigation }) {
     return (
-      <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>stack navigation experience</Text>
-        <Button
-          title=" View More... "
-          onPress={() => navigation.push('Details')}
-        />
+      <SafeAreaView style={{ flex: 1, justifyContent: 'flex-start', alignItems:'flex-start', marginTop:10}}>
+      <Card>
+     <Image style={{width:30 , height:30 , margin: 10}} source={require('../../../../assets/bus.png') }/>
+      <Button
+        title="Irembo Lab"
+        onPress={() => navigation.navigate('Irembo')}
+      />
+      </Card>
+      <Card>
+      <Image style={{width:30 , height:30 , margin: 10}} source={require('../../../../assets/bus.png') }/>
+      <Button
+        title="Awesomity Lab "
+        onPress={() => navigation.navigate('Awesomity')}
+      />
+      </Card>
+      <Card>
+      <Image style={{width:30 , height:30 , margin: 10}} source={require('../../../../assets/bus.png') }/>
+      <Button
+        title="Coursera Lab"
+        onPress={() => navigation.navigate('Coursera')}
+      />
+      </Card>
+    
       </SafeAreaView>
     );
   }
+  function IremboScreen() {
+    return (
+      <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Profile
+        name="John Doe"
+        age={30}
+        nationalID="123456789"
+        dob="01/01/1993"
+        education="Bachelor's Degree"
+        domain="Computer Science"
+        contact="555-555-5555"
+        email="john.doe@email.com"
+        image="https://picsum.photos/100"
+        />
+      </SafeAreaView>
+    );
+  }  
+  function AwesomityScreen() {
+    return (
+      <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Profile
+        name="John Doe"
+        age={30}
+        nationalID="123456789"
+        dob="01/01/1993"
+        education="Bachelor's Degree"
+        domain="Computer Science"
+        contact="555-555-5555"
+        email="john.doe@email.com"
+        image="https://picsum.photos/100"
+        />
+      </SafeAreaView>
+    );
+  }  
+  function CourseraScreen() {
+    return (
+      <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Profile
+        name="John Doe"
+        age={30}
+        nationalID="123456789"
+        dob="01/01/1993"
+        education="Bachelor's Degree"
+        domain="Computer Science"
+        contact="555-555-5555"
+        email="john.doe@email.com"
+        image="https://picsum.photos/100"
+        />
+      </SafeAreaView>
+    );
+  } 
 
 const Tab = createMaterialBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -75,6 +146,10 @@ function LandPage() {
             <HomeStack.Navigator>
               <HomeStack.Screen name="Home" component={HomeScreen} />
               <HomeStack.Screen name="Details" component={DetailsScreen} />
+              <HomeStack.Screen name="Irembo" component={IremboScreen} />
+              <HomeStack.Screen name="Awesomity" component={AwesomityScreen} />
+              <HomeStack.Screen name="Coursera" component={CourseraScreen} />
+
             </HomeStack.Navigator>
           )}
         </Tab.Screen>
@@ -87,7 +162,7 @@ function LandPage() {
           {() => (
             <SettingsDrawer.Navigator>
               <SettingsDrawer.Screen name="Profile" component={SettingsScreen} />
-              <SettingsDrawer.Screen name="Settings" component={DetailsScreen} />
+              <SettingsDrawer.Screen name="List of Companies" component={DetailsScreen} />
             </SettingsDrawer.Navigator>
           )}
         </Tab.Screen>
